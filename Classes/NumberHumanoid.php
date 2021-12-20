@@ -1,5 +1,5 @@
 <?php
-namespace Classess;
+namespace Classes;
 /**
  * Conver A number to Human readable symbole
  * Like 1.2K, 2M, 3.2B etc

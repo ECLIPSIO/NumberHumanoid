@@ -1,5 +1,5 @@
 <?php
-use Classess\NumberHumanoid;
+use Classes\NumberHumanoid;
 
 include_once('./autoload.php');
 
