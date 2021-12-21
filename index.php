@@ -7,7 +7,7 @@ include_once('./autoload.php');
 // out - Number with Identifier
 // amt - Number after conversion
 // exp - Range Identifier
-$ab = new NumberHumanoid(999991, 2);
+$ab = new NumberHumanoid(123, 2);
 echo $ab->out. "\t" .$ab->amt. "\t" .$ab->exp;
 exit;
 ?>

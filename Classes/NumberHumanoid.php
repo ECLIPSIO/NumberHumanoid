@@ -47,7 +47,7 @@ class NumberHumanoid
 		];
 		$this->advance = [
 			[
-				'start'	=> 0,
+				'start'	=> 1,
 				'end'		=> pow(1000,1) - 1,
 				'expr'		=> ''
 			],
@@ -92,21 +92,26 @@ class NumberHumanoid
 	 * @return void
 	 */
 	private function advanceExpr(){
-		foreach($this->advance as $expr){
-			$divisor = $expr['start'];
-			$short = $expr['expr'];
-			if(abs($this->num) >= $expr['start'] AND abs($this->num) <= $expr['end']){
-				break;
+		if(abs($this->num) !== 0)
+		{	
+			foreach($this->advance as $expr){
+				$divisor = $expr['start'];
+				$short = $expr['expr'];
+				if(abs($this->num) >= $expr['start'] AND abs($this->num) <= $expr['end']){
+					break;
+				}
 			}
-		}
 
-		if(($this->num % $divisor) === 0){
-			$this->amt = (int)$this->num / $divisor;
+			if(($this->num % $divisor) === 0){
+				$this->amt = (int)$this->num / $divisor;
+			} else {
+				$this->amt = number_format($this->num / $divisor, $this->precision);
+			}
+			$this->exp = $short;
+			$this->out = $this->amt . $short;
 		} else {
-			$this->amt = number_format($this->num / $divisor, $this->precision);
+			$this->out = $this->amt = $this->num;
 		}
-		$this->exp = $short;
-		$this->out = $this->amt . $short;
 
 	}
 
