@@ -1,0 +1,21 @@
+{
+    "name": "eclipsio/number-humanoid",
+    "description": "Convert Number to Identifier in K(thousands), M(Millions), B(Billions), T(Trillions)",
+    "type": "library",
+    "require": {
+      "php": ">=7.3.0"
+    },
+    "license": "proprietary",
+    "authors": [
+      {
+        "name": "ECLISPIO",
+        "email": "eclipsioz101@gmail.com"
+      }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+          "NumberHumanoid\\": "Classes/"
+        }
+    }
+  }
