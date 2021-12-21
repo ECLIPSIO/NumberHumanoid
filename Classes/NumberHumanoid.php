@@ -45,10 +45,71 @@ class NumberHumanoid
             pow(1000, 5) => 'Qa', // Quadrillion
             pow(1000, 6) => 'Qi', // Quintillion
 		];
+		$this->advance = [
+			[
+				'start'	=> 0,
+				'end'		=> pow(1000,1) - 1,
+				'expr'		=> ''
+			],
+			[
+				'start'	=> pow(1000,1),
+				'end'		=> pow(1000,2) - 1,
+				'expr'		=> 'K'
+			],
+			[
+				'start'	=> pow(1000,2),
+				'end'		=> pow(1000,3) - 1,
+				'expr'		=> 'M'
+			],
+			[
+				'start'	=> pow(1000,3),
+				'end'		=> pow(1000,4) - 1,
+				'expr'		=> 'B'
+			],
+			[
+				'start'	=> pow(1000,4),
+				'end'		=> pow(1000,5) - 1,
+				'expr'		=> 'T'
+			],
+			[
+				'start'	=> pow(1000,5),
+				'end'		=> pow(1000,6) - 1,
+				'expr'		=> 'Qa'
+			],
+			[
+				'start'	=> pow(1000,6),
+				'end'		=> pow(1000,7) - 1,
+				'expr'		=> 'Qi'
+			],
+		];
 		$this->num = $num;
 		$this->precision = $precision;
-		$this->converToExpr();
+		// $this->converToExpr();
+		$this->advanceExpr();
 		// return $this->expr;
+	}
+
+	/**
+	 * Calculate Advance Number Notation
+	 * @return void
+	 */
+	private function advanceExpr(){
+		foreach($this->advance as $expr){
+			$divisor = $expr['start'];
+			$short = $expr['expr'];
+			if(abs($this->num) >= $expr['start'] AND abs($this->num) <= $expr['end']){
+				break;
+			}
+		}
+
+		if(($this->num % $divisor) === 0){
+			$this->amt = (int)$this->num / $divisor;
+		} else {
+			$this->amt = number_format($this->num / $divisor, $this->precision);
+		}
+		$this->exp = $short;
+		$this->out = $this->amt . $short;
+
 	}
 
 	private function converToExpr(){
