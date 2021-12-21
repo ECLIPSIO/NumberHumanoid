@@ -84,9 +84,7 @@ class NumberHumanoid
 		];
 		$this->num = $num;
 		$this->precision = $precision;
-		// $this->converToExpr();
 		$this->advanceExpr();
-		// return $this->expr;
 	}
 
 	/**
@@ -112,23 +110,7 @@ class NumberHumanoid
 
 	}
 
-	private function converToExpr(){
-
-		foreach($this->divisor as $devisor => $short){
-			if( abs($this->num) < ($devisor * 100)){
-				break;
-			}
-		}
-
-		if(($this->num % $devisor) === 0){
-			$this->amt = (int)$this->num / $devisor;
-		} else {
-			$this->amt = number_format($this->num / $devisor, $this->precision);
-		}
-		$this->exp = $short;
-		$this->out = $this->amt . $short;
-
-	}
+	
 }
 
 ?>
